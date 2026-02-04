@@ -11,83 +11,92 @@ export default function Home() {
         <nav className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
           <h1 className="text-2xl font-bold">DHARANI R</h1>
           <div className="space-x-6">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#work">Work</a>
-            <a href="#contact">Contact</a>
-          </div>
+  <a href="#about">About</a>
+  <a href="#qualification">Qualification</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</div>
+
         </nav>
       </header>
 
       {/* Hero */}
-     <section className="min-h-screen flex flex-col items-center justify-center text-center px-6">
+     <section className="min-h-screen flex items-center bg-slate-50 px-6">
+  <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
-  {/* Profile Image */}
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-  >
+    {/* LEFT SIDE – PHOTO */}
+    <motion.div
+  initial={{ opacity: 0, x: -40 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.6 }}
+  className="flex justify-center md:justify-end md:-ml-12"
+>
+  <div className="relative">
+    <div className="absolute inset-0 rounded-2xl bg-blue-100 blur-xl"></div>
+
     <Image
       src="/images/passport size photo.jpg"
-      alt="Profile"
-      width={180}
-      height={180}
-      className="rounded-full mb-6 border-4 border-gray-200"
+      alt="Dharani Profile Photo"
+      width={320}
+      height={400}
+      className="relative rounded-2xl object-cover border border-slate-200 shadow-lg bg-white"
     />
-  </motion.div>
+  </div>
+</motion.div>
 
-  {/* Name */}
-  <motion.h1
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.3 }}
-    className="text-4xl font-bold"
-  >
-    Hi, I'm Dharani
-  </motion.h1>
 
-  {/* Title */}
-  <motion.p
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: 0.6 }}
-    className="mt-3 text-gray-600"
-  >
-    Final-year Computer Science student | Aspiring Software Developer
-  </motion.p>
-
-  {/* Buttons */}
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.9 }}
-    className="mt-6 flex gap-4"
-  >
-    <a
-      href="#contact"
-      className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition"
+    {/* RIGHT SIDE – CONTENT */}
+    <motion.div
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="text-center md:text-left"
     >
-      Hire Me
-    </a>
+      <h1 className="text-4xl md:text-5xl font-semibold text-slate-900">
+        Hi, I’m Dharani
+      </h1>
 
-    <a
-      href="#projects"
-      className="px-6 py-3 border border-black rounded-lg hover:bg-black hover:text-white transition"
-    >
-      My Work
-    </a>
+      <p className="mt-4 text-lg text-slate-600">
+        Final-year Computer Science student and aspiring Software Developer with
+        strong interest in building scalable, user-centric web applications.
+      </p>
 
-    <a
-      href="/resume/Dharani.resume_C.pdf"
-      download
-      className="px-6 py-3 border border-gray-400 rounded-lg hover:bg-gray-100 transition"
-    >
-      Download Resume
-    </a>
-  </motion.div>
+      <p className="mt-4 text-slate-600">
+        Skilled in React, Next.js, Java. Actively preparing
+        for software engineering roles and passionate about continuous learning.
+      </p>
 
+      {/* ACTION BUTTONS */}
+      <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+        <a
+          href="#contact"
+          className="px-6 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+        >
+          Hire Me
+        </a>
+
+        <a
+  href="#projects"
+  className="px-6 py-3 rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition"
+>
+  View Projects
+</a>
+
+
+        <a
+          href="/Dharani.resume_C.pdf"
+          download
+          className="px-6 py-3 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 transition"
+        >
+          Download Resume
+        </a>
+      </div>
+    </motion.div>
+
+  </div>
 </section>
+
+
 
 
       {/* About */}
@@ -101,48 +110,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center">My Services</h2>
+      {/* Qualification */}
+<section id="qualification" className="py-20 scroll-mt-28">
+  <div className="max-w-6xl mx-auto px-6">
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            <div className="border p-8 rounded-2xl">
-              <h3 className="text-2xl font-semibold">Web Development</h3>
-              <p className="mt-4 text-gray-600">
-                Building fast and responsive websites using modern tools.
-              </p>
-            </div>
+    <h2 className="text-3xl font-semibold text-slate-900 mb-10 text-center">
+      Qualification
+    </h2>
 
-            <div className="border p-8 rounded-2xl">
-              <h3 className="text-2xl font-semibold">Software developer</h3>
-              <p className="mt-4 text-gray-600">
-                Designing clean and modern user interfaces.
-              </p>
-            </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-            <div className="border p-8 rounded-2xl">
-              <h3 className="text-2xl font-semibold">Performance</h3>
-              <p className="mt-4 text-gray-600">
-                Optimized and SEO-friendly applications.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Academic */}
+      <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
+        <h3 className="text-xl font-semibold text-slate-900">Academic</h3>
+        <p className="mt-4 text-slate-600">
+          Strong academic foundation in Computer Science with coursework in
+          Data Structures, Algorithms, Operating Systems, DBMS, and Computer Networks.
+        </p>
+      </div>
 
-      {/* Portfolio */}
-      <section id="work" className="py-24 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center">My Work</h2>
+      {/* Skills */}
+      <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
+        <h3 className="text-xl font-semibold text-slate-900">Skills</h3>
+        <p className="mt-4 text-slate-600">
+          Proficient in HTML, Java, JavaScript, React, Next.js, Tailwind CSS, and Git.
+        </p>
+      </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            <Project title="Portfolio Website" />
-            <Project title="E-commerce UI" />
-            <Project title="Dashboard App" />
-          </div>
-        </div>
-      </section>
+    </div>
+  </div>
+</section>
+
+
+      {/* Projects */}
+<section id="projects" className="py-24 bg-gray-50 scroll-mt-28">
+  <div className="max-w-6xl mx-auto px-6">
+
+    <h2 className="text-3xl font-semibold text-slate-900 text-center mb-12">
+      Projects
+    </h2>
+
+    <div className="grid md:grid-cols-3 gap-8">
+      <Project title="Portfolio Website" />
+      <Project title="E-commerce UI" />
+      <Project title="Dashboard App" />
+    </div>
+
+  </div>
+</section>
+
 
       {/* Contact */}
       <section id="contact" className="py-24">
@@ -150,26 +166,49 @@ export default function Home() {
           <h2 className="text-4xl font-bold">Contact Me</h2>
           <p className="mt-4 text-gray-600">Let’s work together</p>
 
-          <form className="mt-12 grid gap-6">
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="border p-4 rounded-xl"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="border p-4 rounded-xl"
-            />
-            <textarea
-              placeholder="Message"
-              rows={4}
-              className="border p-4 rounded-xl"
-            />
-            <button className="bg-indigo-600 text-white py-4 rounded-xl">
-              Send Message
-            </button>
-          </form>
+          <form
+  action="https://formsubmit.co/dharanirajamanickam7@gmail.com"
+  method="POST"
+  className="mt-12 grid gap-6"
+>
+  {/* Disable captcha */}
+  <input type="hidden" name="_captcha" value="false" />
+
+  {/* Email subject */}
+  <input type="hidden" name="_subject" value="New Portfolio Contact!" />
+
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+    className="border p-4 rounded-xl"
+  />
+
+  <input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    required
+    className="border p-4 rounded-xl"
+  />
+
+  <textarea
+    name="message"
+    placeholder="Message"
+    rows={4}
+    required
+    className="border p-4 rounded-xl"
+  />
+
+  <button
+    type="submit"
+    className="bg-indigo-600 text-white py-4 rounded-xl hover:bg-indigo-700 transition"
+  >
+    Send Message
+  </button>
+</form>
+
         </div>
       </section>
 
