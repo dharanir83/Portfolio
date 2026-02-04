@@ -1,27 +1,76 @@
 "use client";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.target.id) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
+    
     <main className="bg-white text-gray-900">
 
       {/* Navbar */}
       <header className="fixed top-0 w-full bg-white border-b z-50">
         <nav className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
           <h1 className="text-2xl font-bold">DHARANI R</h1>
-          <div className="space-x-6">
-  <a href="#about">About</a>
-  <a href="#qualification">Qualification</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
+          <div className="flex space-x-3">
+  {[
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "qualification", label: "Qualification" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" },
+  ].map((item) => (
+    <a
+      key={item.id}
+      href={`#${item.id}`}
+      onClick={() => setActiveSection(item.id)}
+      className={`px-4 py-2 rounded-md font-medium transition-all duration-300
+        ${
+          activeSection === item.id
+            ? "bg-blue-600 text-white shadow-md"
+            : "text-gray-700 hover:bg-blue-100 hover:text-blue-600"
+        }
+      `}
+    >
+      {item.label}
+    </a>
+  ))}
 </div>
+
+
 
         </nav>
       </header>
 
       {/* Hero */}
-     <section className="min-h-screen flex items-center bg-slate-50 px-6">
+     <section
+  id="home"
+  className="min-h-screen flex items-center bg-slate-50 px-6 scroll-mt-24"
+>
+
   <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
     {/* LEFT SIDE – PHOTO */}
@@ -208,6 +257,27 @@ export default function Home() {
     Send Message
   </button>
 </form>
+<div className="mt-6 flex gap-6 justify-center">
+  {/* LinkedIn */}
+  <a
+    href="https://www.linkedin.com/in/dharani4/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-slate-600 hover:text-blue-600 transition text-2xl"
+  >
+    <FaLinkedin />
+  </a>
+
+  {/* GitHub */}
+  <a
+    href="https://github.com/dharanir83"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-slate-600 hover:text-black transition text-2xl"
+  >
+    <FaGithub />
+  </a>
+</div>
 
         </div>
       </section>
