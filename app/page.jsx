@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
 
@@ -152,7 +153,7 @@ export default function Home() {
 
 
         <a
-          href="/Dharani.resume_C.pdf"
+          href="/DharaniR_Resume.pdf"
           download
           className="px-6 py-3 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 transition"
         >
@@ -232,7 +233,7 @@ export default function Home() {
     </h3>
     <p className="mt-2 text-slate-600">Platform: AWS</p>
     <p className="text-sm text-slate-500 mt-1">
-      Covered OOP, collections, and exception handling.
+      Covered core AWS services, cloud concepts, deployment best practices, and foundational cloud architecture.
     </p>
     <a
     href="/certificates/AWS.pdf"
@@ -251,7 +252,7 @@ export default function Home() {
     </h3>
     <p className="mt-2 text-slate-600">Platform: Microsoft</p>
     <p className="text-sm text-slate-500 mt-1">
-      Built component-based UIs using hooks and state management.
+      It covered data modeling, visualization, DAX calculations, report creation, and business insights using Power BI
     </p>
     <a
     href="/certificates/powerBI.jpg.jpeg"
@@ -271,7 +272,7 @@ export default function Home() {
       </h3>
       <p className="mt-2 text-slate-600">Platform: Udemy</p>
       <p className="text-sm text-slate-500 mt-1">
-        Learned queries, joins, and database normalization.
+        It covered building dynamic UIs, component-based architecture, state management, hooks, routing, and full-stack React applications.
       </p>
       <a
     href="/certificates/react.pdf"
@@ -302,9 +303,24 @@ export default function Home() {
     </h2>
 
     <div className="grid md:grid-cols-3 gap-8">
-      <Project title="Portfolio Website" />
-      <Project title="E-commerce UI" />
-      <Project title="Dashboard App" />
+      <Project
+  title="Portfolio Website"
+  image="/projects/Digital port.png"
+  description="Next.js + Tailwind project"
+/>
+
+<Project
+  title="Emotion-Based music recommendation website"
+  image="/projects/emotion.png"
+  description="Modern e-commerce user interface featuring product listings, filters, cart layout, and clean UI components."
+/>
+
+<Project
+  title="Secure file sharing system"
+  image="/projects/secure.png"
+  description="Interactive dashboard with charts, analytics cards, and data visualization designed for admin use cases."
+/>
+
     </div>
 
   </div>
@@ -395,18 +411,36 @@ export default function Home() {
   );
 }
 
+
 /* Project Card Component */
-function Project({ title }) {
+function Project({ title, image, description }) {
   return (
-    <div className="bg-white border rounded-2xl overflow-hidden">
-      <div className="h-40 bg-indigo-100"></div>
+    <div className="bg-white border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+      
+      {/* Project Image */}
+      <div className="relative h-48 w-full overflow-hidden">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover object-[center_top] translate-y-2 transition-transform duration-300 hover:scale-105"
+
+        />
+      </div>
+
+      {/* Project Content */}
       <div className="p-6">
         <h3 className="text-xl font-semibold">{title}</h3>
         <p className="mt-2 text-gray-600">
-          Next.js + Tailwind project
+          {description}
         </p>
       </div>
+
     </div>
   );
 }
+
+
+
 
