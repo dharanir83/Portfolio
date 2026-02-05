@@ -153,7 +153,7 @@ export default function Home() {
 
 
         <a
-          href="/DharaniR_Resume.pdf"
+          href="/resume/DharaniR_Resume.pdf"
           download
           className="px-6 py-3 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 transition"
         >
