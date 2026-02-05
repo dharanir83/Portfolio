@@ -40,23 +40,42 @@ export default function Home() {
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "qualification", label: "Qualification" },
+    { id: "certifications", label: "Certifications" },
     { id: "projects", label: "Projects" },
     { id: "contact", label: "Contact" },
   ].map((item) => (
     <a
-      key={item.id}
-      href={`#${item.id}`}
-      onClick={() => setActiveSection(item.id)}
-      className={`px-4 py-2 rounded-md font-medium transition-all duration-300
-        ${
-          activeSection === item.id
-            ? "bg-blue-600 text-white shadow-md"
-            : "text-gray-700 hover:bg-blue-100 hover:text-blue-600"
-        }
-      `}
-    >
-      {item.label}
-    </a>
+  key={item.id}
+  onClick={(e) => {
+    e.preventDefault();
+    const section = document.getElementById(item.id);
+    if (section) {
+      let yOffset = 0; // default for most sections (centered)
+      if (item.id === "qualification") {
+        yOffset = -80; // slightly up
+      }
+
+      const y =
+        section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({ top: y, behavior: "smooth" });
+      setActiveSection(item.id);
+    }
+  }}
+  href={`#${item.id}`}
+  className={`px-4 py-2 rounded-md font-medium transition-all duration-300
+    ${
+      activeSection === item.id
+        ? "bg-blue-600 text-white shadow-md"
+        : "text-gray-700 hover:bg-blue-100 hover:text-blue-600"
+    }
+  `}
+>
+  {item.label}
+</a>
+
+
+
   ))}
 </div>
 
@@ -149,50 +168,133 @@ export default function Home() {
 
 
       {/* About */}
-      <section id="about" className="py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold">About Me</h2>
-          <p className="mt-6 text-gray-600 leading-relaxed">
-             I build clean, responsive web applications using React, Next.js, and modern
-  frontend tools. Passionate about problem-solving and learning new technologies.
+      <section
+  id="about"
+  className="min-h-screen flex flex-col justify-center py-40 bg-gray-50"
+>
+
+
+      
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-5xl font-bold">About Me</h2>
+          <p className="mt-6 text-lg md:text-xl text-gray-600 leading-relaxed">
+             "I am a motivated Computer Science undergraduate with hands-on experience in web and mobile development, specializing in JavaScript, React.js, and Next.js. I thrive on building user-focused, scalable solutions and have demonstrated my skills through internships, hackathons, and innovative projects. Passionate about clean code, problem-solving, and continuous learning, I aim to grow into a product-minded engineer contributing to impactful technology solutions."
           </p>
         </div>
+        
       </section>
 
       {/* Qualification */}
-<section id="qualification" className="py-20 scroll-mt-28">
-  <div className="max-w-6xl mx-auto px-6">
+<section id="qualification" className="py-40 bg-white">
+  
+  <div className="max-w-6xl mx-auto px-6 flex flex-col justify-center h-full">
+  <h2 className="text-4xl font-semibold text-slate-900 text-center mb-12">
+    Qualification
+  </h2>
 
-    <h2 className="text-3xl font-semibold text-slate-900 mb-10 text-center">
-      Qualification
-    </h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+    {/* Academic Card */}
+    <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
+      <h3 className="text-xl font-semibold text-slate-900">Academic</h3>
+      <p className="mt-4 text-slate-600">
+        Strong academic foundation in Computer Science with coursework in
+        Data Structures, Algorithms, Operating Systems, DBMS, and Computer Networks.
+      </p>
+    </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-
-      {/* Academic */}
-      <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
-        <h3 className="text-xl font-semibold text-slate-900">Academic</h3>
-        <p className="mt-4 text-slate-600">
-          Strong academic foundation in Computer Science with coursework in
-          Data Structures, Algorithms, Operating Systems, DBMS, and Computer Networks.
-        </p>
-      </div>
-
-      {/* Skills */}
-      <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
-        <h3 className="text-xl font-semibold text-slate-900">Skills</h3>
-        <p className="mt-4 text-slate-600">
-          Proficient in HTML, Java, JavaScript, React, Next.js, Tailwind CSS, and Git.
-        </p>
-      </div>
-
+    {/* Skills Card */}
+    <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
+      <h3 className="text-xl font-semibold text-slate-900">Skills</h3>
+      <p className="mt-4 text-slate-600">
+        Proficient in HTML, Java, JavaScript, React, Next.js, Tailwind CSS, and Git.
+      </p>
     </div>
   </div>
+</div>
+
+
+</section>
+{/* Certifications */}
+<section id="certifications" className="min-h-screen flex flex-col justify-center py-40 bg-gray-50">
+  
+  <div className="max-w-6xl mx-auto px-6">
+
+    <h2 className="text-3xl font-semibold text-slate-900 text-center mb-12">
+      Certifications
+    </h2>
+
+   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+  {/* Certificate 1 */}
+  <div className="p-6 bg-white border rounded-xl shadow-sm hover:shadow-md transition">
+    <h3 className="text-lg font-semibold text-slate-900">
+      AWS cloud practitioner (2025)
+    </h3>
+    <p className="mt-2 text-slate-600">Platform: AWS</p>
+    <p className="text-sm text-slate-500 mt-1">
+      Covered OOP, collections, and exception handling.
+    </p>
+    <a
+    href="/certificates/AWS.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block mt-4 text-blue-600 font-medium hover:underline"
+  >
+    View Certificate →
+  </a>
+  </div>
+
+  {/* Certificate 2 */}
+  <div className="p-6 bg-white border rounded-xl shadow-sm hover:shadow-md transition">
+    <h3 className="text-lg font-semibold text-slate-900">
+      PowerBI Data Analyst Associate (2024)
+    </h3>
+    <p className="mt-2 text-slate-600">Platform: Microsoft</p>
+    <p className="text-sm text-slate-500 mt-1">
+      Built component-based UIs using hooks and state management.
+    </p>
+    <a
+    href="/certificates/powerBI.jpg.jpeg"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block mt-4 text-blue-600 font-medium hover:underline"
+  >
+    View Certificate →
+  </a>
+  </div>
+
+  {/* Certificate 3 – CENTERED */}
+  <div className="md:col-span-2 flex justify-center">
+    <div className="p-6 bg-white border rounded-xl shadow-sm hover:shadow-md transition w-full md:w-1/2">
+      <h3 className="text-lg font-semibold text-slate-900">
+        React (The Complete Guide)- 2025
+      </h3>
+      <p className="mt-2 text-slate-600">Platform: Udemy</p>
+      <p className="text-sm text-slate-500 mt-1">
+        Learned queries, joins, and database normalization.
+      </p>
+      <a
+    href="/certificates/react.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block mt-4 text-blue-600 font-medium hover:underline"
+  >
+    View Certificate →
+  </a>
+    </div>
+  </div>
+
+</div>
+
+
+  </div>
+  
 </section>
 
 
       {/* Projects */}
-<section id="projects" className="py-24 bg-gray-50 scroll-mt-28">
+<section id="projects" className="min-h-screen flex flex-col justify-center py-40 bg-gray-50">
+  
   <div className="max-w-6xl mx-auto px-6">
 
     <h2 className="text-3xl font-semibold text-slate-900 text-center mb-12">
@@ -206,11 +308,13 @@ export default function Home() {
     </div>
 
   </div>
+
 </section>
 
 
       {/* Contact */}
       <section id="contact" className="py-24">
+      
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold">Contact Me</h2>
           <p className="mt-4 text-gray-600">Let’s work together</p>
@@ -305,3 +409,4 @@ function Project({ title }) {
     </div>
   );
 }
+
