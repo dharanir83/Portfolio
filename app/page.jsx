@@ -312,13 +312,13 @@ export default function Home() {
 <Project
   title="Emotion-Based music recommendation website"
   image="/projects/emotion.png"
-  description="Modern e-commerce user interface featuring product listings, filters, cart layout, and clean UI components."
+  description="Developed an ML-powered web platform that recommends songs based on user emotions."
 />
 
 <Project
   title="Secure file sharing system"
   image="/projects/secure.png"
-  description="Interactive dashboard with charts, analytics cards, and data visualization designed for admin use cases."
+  description="Developing a secure web-based file sharing system with user authentication and access control."
 />
 
     </div>
